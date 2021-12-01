@@ -6,7 +6,7 @@ depths = list(map(int, depths))
 
 increasesCount = 0
 previousDepth = 99999999999999999
-keys = list(range(len(depths)))
+keys = range(len(depths))
 for i in keys:
     if i+2 not in keys:
         break
