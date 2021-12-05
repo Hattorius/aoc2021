@@ -24,9 +24,10 @@ for line in input:
 if len(board) > 0:
     boards.append(board)
 
-win = False
+won = []
 for number in drawn:
-    for board in boards:
+    for iii in range(len(boards)):
+        board = boards[iii]
         for row in board:
             for i in range(len(row)):
                 n = row[i]
@@ -34,6 +35,7 @@ for number in drawn:
                     n['picked'] = True
                     rowMatch = 0
                     colMatch = 0
+                    win = False
                     for nn in row:
                         if nn['picked']:
                             rowMatch += 1
@@ -47,6 +49,10 @@ for number in drawn:
                         if colMatch == len(board):
                             win = True
                     if win:
+                        if iii in won or len(won) < len(boards) - 1:
+                            if iii not in won:
+                                won.append(iii)
+                            continue
                         winValue = 0
                         for roww in board:
                             for nnn in roww:
